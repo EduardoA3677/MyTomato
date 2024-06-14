@@ -108,8 +108,8 @@ This allows faster read/write access, and increases the life of your USB device 
     Where FILESYSTEM can be **ext2**, **ext3** or **ext4** _(default)_
 
     ```bash
-    export FILESYSTEM="ext4"
-    wget -O - https://raw.githubusercontent.com/toulousain79/MyTomato/master/Install_From_Scratch.sh | sh
+    export FILESYSTEM="ext2"
+    wget -O - https://raw.githubusercontent.com/EduardoA3677/MyTomato/master/Install_From_Scratch.sh | sh
     ```
 
 5. At the end, you will get the following message:
