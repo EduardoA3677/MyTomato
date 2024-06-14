@@ -14,8 +14,8 @@ gsWan1_DNS=""
 (type opkg >/dev/null) && echo "ERROR: 'opkg' already exist" && exit 1
 
 #### Mount /opt
-(df -h | grep -q '/tmp/mnt/ENTWARE') && umount /tmp/mnt/ENTWARE
-echo "LABEL=ENTWARE /opt ${FILESYSTEM} defaults,data=writeback,noatime,nodiratime 0 0" >/etc/fstab
+(df -h | grep -q '/tmp/mnt/usb') && umount /tmp/mnt/usb
+echo "LABEL=usb /opt ${FILESYSTEM} defaults,data=writeback,noatime,nodiratime 0 0" >/etc/fstab
 mount -a
 (! df -h | grep -q '/opt') && echo "ERROR: '/opt' not mounting" && exit 1
 
@@ -117,7 +117,7 @@ fi
 
 # Add /opt UUID to "/opt/MyTomato/root/ConfigOverload/vars"
 cp -v /opt/MyTomato/root/TEMPLATEs/vars.tmpl /opt/MyTomato/root/ConfigOverload/vars
-gsUsbOptUuid="$(blkid | grep 'ENTWARE' | awk '{ print $3 }' | cut -d '"' -f 2)"
+gsUsbOptUuid="$(blkid | grep 'usb' | awk '{ print $3 }' | cut -d '"' -f 2)"
 if [ -f /opt/MyTomato/root/ConfigOverload/vars ]; then
     nNumLine=$(grep 'gsUsbOptUuid' -n -m 1 </opt/MyTomato/root/ConfigOverload/vars | cut -d ':' -f 1)
     sed -i "${nNumLine}"s/.*/gsUsbOptUuid=\""${gsUsbOptUuid}"\"/ /opt/MyTomato/root/ConfigOverload/vars
@@ -231,7 +231,7 @@ touch ${gsDirOverLoad}/.bash_aliases
 #### NVRAM settings
 # Administration > Scripts > Init
 nvram set script_init="echo \"LABEL=SWAP none swap sw 0 0\" > /etc/fstab
-echo \"LABEL=ENTWARE /opt ${FILESYSTEM} defaults,data=writeback,noatime,nodiratime 0 0\" >> /etc/fstab
+echo \"LABEL=usb /opt ${FILESYSTEM} defaults,data=writeback,noatime,nodiratime 0 0\" >> /etc/fstab
 touch /etc/dnsmasq-custom.conf"
 
 # USB and NAS > USB Support>Run after mounting
