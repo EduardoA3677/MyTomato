@@ -92,7 +92,7 @@ ntpdate -4 -p 1 -u 0.fr.pool.ntp.org
 
 #### Clone GitHub repoistory
 if [ ! -d /opt/MyTomato ]; then
-    git clone git://github.com/toulousain79/MyTomato.git /opt/MyTomato
+    git clone https://github.com/EduardoA3677/MyTomato.git /opt/MyTomato
 else
     cd /opt/MyTomato || exit 1
     git fetch origin
