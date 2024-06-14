@@ -103,7 +103,7 @@ fi
 #### DNScrypt-proxy v2
 if (! nvram get os_version | grep -q 'AIO'); then
     if [ ! -d /opt/usr/local/dnscrypt-proxy ]; then
-        git clone git://github.com/jedisct1/dnscrypt-proxy.git /opt/usr/local/dnscrypt-proxy
+        git clone git@github.com:EduardoA3677/dnscrypt-proxy.git /opt/usr/local/dnscrypt-proxy
     else
         cd /opt/usr/local/dnscrypt-proxy || exit 1
         git fetch origin
