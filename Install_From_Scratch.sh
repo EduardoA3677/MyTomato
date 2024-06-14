@@ -35,7 +35,7 @@ rm -rf /tmp/i18n
 opkg update
 opkg install \
     bash \
-    wget \
+    wget-ssl \
     curl \
     bzip2 \
     less \
@@ -84,6 +84,8 @@ opkg install \
     nfs-kernel-server \
     nfs-kernel-server-utils \
     python3
+    
+opkg remove wget-nossl
 
 #### NTP
 ntpdate -4 -p 1 -u 0.fr.pool.ntp.org
